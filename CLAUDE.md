@@ -231,3 +231,9 @@ flake8, pylint and bandit pass on all of these; the pull request's analysis does
 ### Enforcement Workflow
 - Before committing: run `pip install pylint flake8 bandit` and locally execute `pylint je_mail_thunder`, `flake8 je_mail_thunder`, `bandit -r je_mail_thunder`.
 - Treat any new SonarQube / Codacy finding on changed lines as a blocker. After pushing to a pull request, read its SonarCloud and Codacy results before calling the work done. Do not suppress rules (`# noqa`, `# pylint: disable=`) without a comment explaining why and which specific rule is being suppressed.
+
+## Git worktrees: merge and remove
+
+- Every git worktree created for a task must be finished off: merge its branch back into the branch it was started from, then remove the worktree (`git worktree remove <path>`) and delete its branch (`git branch -d <branch>`).
+- Do not leave worktrees behind when the work is done; check `git worktree list` before ending the task.
+- If a worktree cannot be merged yet, say so explicitly instead of leaving it behind silently.
